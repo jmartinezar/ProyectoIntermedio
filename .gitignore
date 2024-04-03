@@ -15,6 +15,7 @@ obj/*
 cachegrind-report.txt
 gprof-report.txt
 # some other files generated at execution
+*.aux *.bbl *.blg *.dtx
 gmon.out
 test_gprof
 *.png *.log *.pdf *.out
