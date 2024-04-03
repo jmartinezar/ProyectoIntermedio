@@ -1,12 +1,12 @@
 CXX_FLAGS = -std=c++20
-OPTFLAGS = -O3
+OPTFLAGS = 
 DEBUG_FLAGS = -g -Wall
 C2FLAGS = -l Catch2Main -l Catch2
 SANITIZERS = -fsanitize=address,undefined,leak
 OBJ = obj
 DAT = data
 
-exec: $(DAT)/%.txt main.x all 1 2 3 4
+exec: $(DAT)/%.txt main.x all 1 2 3 4 exectime
 	@echo "\nEjecución terminada. Los archivos .log de los arreglos se encuentran en el directorio figures/fitlogs"
 
 $(DAT)/%.txt: main.x
@@ -36,6 +36,9 @@ $(OBJ)/main.o: main.cpp include/include.cpp
 
 4: 4.gp $(DAT)/4.txt
 	gnuplot 4.gp
+
+exectime: exectime.gp exectime.txt
+	gnuplot exectime.gp
 
 $(OBJ)/test.o: test.cpp include/include.cpp
 	g++ -c test.cpp -o $(OBJ)/test.o
