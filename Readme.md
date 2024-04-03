@@ -16,6 +16,7 @@ El sistema fue modelado tomando en consideración dos partes del mismo: la taza 
 <!-- - `input4.txt`: Incluye los valores del sistema para el punto 4. -->
 - `input-profiling.txt`: Incluye los valores del sistema para hacer el profiling de la ejecución. Se usa un valor menor de `Nstep` para minimizar el tiempo de ejecución en profiling.
 - `*.gp`: Incluyen el código de gnuplot que genera la imagen correspondiente al punto.
+- `exectime.txt`: Incluye los datos obtenidos de la dependencia del tiempo de ejecución respecto al parámetro `size`.
 - `Makefile`: Automatiza la ejecución del código y los reportes de profiling.
 
 ## Archivos generados
