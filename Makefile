@@ -39,20 +39,17 @@ test_gprof.x: main.cpp include.cpp
 gprof: test_gprof.x gmon.out
 	gprof $^ > gprof.txt
 
-test_val_cache.x: $(OBJ)/main.o $(OBJ)/include.o
+valgrind.x: $(OBJ)/main.o $(OBJ)/include.o
 	g++ $(CXX_FLAGS) $(DEBUG_FLAGS) $^ -o $@
 
-cachegrind-report.txt: test_val_cache.x input-profiling.txt
+cachegrind-report.txt: valgrind.x input-profiling.txt
 	valgrind --tool=cachegrind --cachegrind-out-file=$@ --quiet ./$^
 
 cachegrind: cachegrind-report.txt
 	cg_annotate --auto=yes $@-report.txt
 
-memcheck.x: main.cpp include.cpp
-	g++ -g -O3 $^ -o $@
-
-memcheck: memcheck.x
-	valgrind --tool=memcheck --leak-check=yes ./$<
+memcheck: valgrind.x input-profiling.txt
+	valgrind --tool=memcheck --leak-check=yes ./$^
 
 clean: 
-	rm *.x obj/* data/* figures/*.pdf figures/fitlogs/*
+	rm *.x cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
