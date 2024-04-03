@@ -8,13 +8,32 @@ El sistema fue modelado tomando en consideración dos partes del mismo: la taza 
 
 # Archivos de código
 
-- `include.h`: Incluye los encabezados de las funciones a implementar.
-- `include.cpp`: Incluye la implementación de las funciones.
-- `main.cpp`: Incluye la ejecución del código con la solución de los puntos 1, 2 y 4.
-- `input.txt`: Incluye los valores del sistema para los puntos 1 y 2.
-- `input4.txt`: Incluye los valores del sistema para el punto 4.
+## Archivos base
+- `include/include.h`: Incluye los encabezados de las funciones a implementar.
+- `include/include.cpp`: Incluye la implementación de las funciones.
+- `main.cpp`: Incluye la ejecución del código con la solución de los puntos 1, 2, 3 y 4.
+- `input.txt`: Incluye los valores del sistema para los puntos 1, 2, 3 y 4.
+<!-- - `input4.txt`: Incluye los valores del sistema para el punto 4. -->
+- `input-profiling.txt`: Incluye los valores del sistema para hacer el profiling de la ejecución. Se usa un valor menor de `Nstep` para minimizar el tiempo de ejecución en profiling.
 - `*.gp`: Incluyen el código de gnuplot que genera la imagen correspondiente al punto.
 - `Makefile`: Automatiza la ejecución del código y los reportes de profiling.
+
+## Archivos generados
+- `data/*`: Archivos de datos generados en la ejecución de `main.cpp` que serán posteriormente usados para generar las figuras correspondientes a cada punto.
+- `figures/*.pdf`:  Archivos `.pdf` con las figuras generadas para cada punto.
+- `figures/fitlog/*`: Archivos `.log` con los datos de las regresiones hechas para los puntos `2,3,4`.
+- `obj/*`: Directorio de archivos objeto generados por la ejecución. 
+- `cachegrind-report.txt`: Archivo de reporte de `valgrind` usando la herramienta `--tool=cachegrind`.
+- `Makefile`: Archivo de automatización con los targets que se especifican a continuación. 
+- `/*.x`: Ejecutables generados. 
+
+## Makefile
+- `all`: Compila y crea el ejecutable principal para generar todos los datos necesarios para la solución de los puntos 1, 2, 3 y 4.
+- `test`: Compila y ejecuta los tests creados con `catch2`. Se consta de 5 tests, separados en dos grupos, haciendo pruebas sobre la emergente propiedad de la flecha del tiempo, y sobre la entropía de Boltzmann.
+<!-- - `gprof`:  -->
+- `cachegrind`: Compila de la forma adecuada los archivos `main.cpp` e `include.cpp` para crear un reporte de profiling llamado `cachegrind-profiling.txt` que se guarda en el directorio raíz y contiene información sobre el número de ejecuciones ejecutadas por el programa.<br><b>Tiempo de ejecución: </b> Para un equipo con un procesador Intel i510300H de 4 núcleos y 8 hilos con frecuencia base 2.50Ghz, la ejecución de `cachegrind`, usando el archivo `input-profiling.txt` con `Nsteps = 10000` (archivo default) tarda aproximadamente 3m10s.
+- `memcheck`: Compila adecuadamente los archivos `main.cpp` e `include.cpp` para detectar posibles leaks de memoria en la implementación.<br><b>Tiempo de ejecución: </b> Para el mismo equipo, la ejecución de `memcheck`, usando el archivo `input-profiling.txt` con `Nsteps = 10000` (archivo default) tarda aproximadamente 3m20s.
+<!-- - `report`:  -->
 
 # Funciones implementadas
 
