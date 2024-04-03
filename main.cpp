@@ -1,5 +1,5 @@
 #include <iostream>
-#include "include.h"
+#include "include/include.h"
 #include <fstream>
 #include <vector>
 
@@ -25,7 +25,7 @@ int main(void)
   cuatro_cuadros_centrados(Nmol, size, particles, seed);
   
   std::ofstream output1;
-  output1.open("1.txt");
+  output1.open("data/1.txt", std::ios::out);
   
   evolution(Nmol, size, particles, seed, Nstep, output1, 1);
   
@@ -47,7 +47,7 @@ int main(void)
   
   int t = find_t_eq(Nmol, size, particles, seed, Nstep);
   
-  std::ofstream output2("2.txt", std::ios::out);
+  std::ofstream output2("data/2.txt", std::ios::out);
   
   output2 << size << "\t" << t << "\n";
   
@@ -78,7 +78,7 @@ int main(void)
   cuatro_cuadros_centrados(Nmol, size, particles, seed);
 
   std::ofstream output3;
-  output3.open("3.txt");
+  output3.open("data/3.txt", std::ios::out);
 
   evolution(Nmol, size, particles, seed, Nstep, output3, 3);
 
@@ -100,7 +100,7 @@ int main(void)
 
   cuatro_cuadros_centrados(Nmol, size, particles, seed);
 
-  std::ofstream output4("4.txt", std::ios::out);
+  std::ofstream output4("data/4.txt", std::ios::out);
 
   with_hole(size, particles, seed, Nstep, ratio, output4);
 
