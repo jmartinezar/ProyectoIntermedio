@@ -1,18 +1,20 @@
 # old README
 README
-# executables
+# executables in root
 *.o
 *.x
-# text files generated at excecution
-1.txt
-2.txt
-3.txt
-4.txt
+# data files generated at excecution
+1.txt 2.txt 3.txt 4.txt 
+data/*
+# figures and related files
+figures/*.pdf
+figures/fitlogs/*
+# object files generated for execution
+obj/*
+# report files
+cachegrind-report.txt
 # some other files generated at execution
-*.png
-*.log
-*.pdf
+*.png *.log *.pdf *.out
 test.txt
 cachegrind.out.*
 gprof.txt
-*.out
