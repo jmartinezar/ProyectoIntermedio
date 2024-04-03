@@ -13,7 +13,9 @@ figures/fitlogs/*
 obj/*
 # report files
 cachegrind-report.txt
+gprof-report.txt
 # some other files generated at execution
+gmon.out
 *.png *.log *.pdf *.out
 test.txt
 cachegrind.out.*

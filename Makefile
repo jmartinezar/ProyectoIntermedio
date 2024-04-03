@@ -1,4 +1,5 @@
-CXX_FLAGS = -std=c++20 -O3
+CXX_FLAGS = -std=c++20
+OPTFLAGS = -O3
 DEBUG_FLAGS = -g -Wall
 C2FLAGS = -l Catch2Main -l Catch2
 SANITIZERS = -fsanitize=address,undefined,leak
@@ -14,7 +15,7 @@ $(DAT)/%.txt: main.x
 all: main.x input.txt
 
 main.x: $(OBJ)/main.o $(OBJ)/include.o
-	g++ $(CXX_FLAGS) $(DEBUG_FLAGS) $(SANITIZERS) $^ -o $@
+	g++ $(CXX_FLAGS) $(OPTFLAGS) $(DEBUG_FLAGS) $(SANITIZERS) $^ -o $@
 
 $(OBJ)/main.o: main.cpp include/include.cpp
 	g++ -c main.cpp -o $(OBJ)/main.o
@@ -46,15 +47,15 @@ test.x: $(OBJ)/test.o $(OBJ)/include.o
 test: test.x
 	./$<
 
-test_gprof.x: main.cpp include.cpp
-	g++ -O3 -Wall -pg -g $^ -o $@
-	./$@
+gprof.x: $(OBJ)/main.o $(OBJ)/include.o
+	g++ $(OPTFLAGS) $(DEBUG_FLAGS) -pg $^ -o $@
+	./$@ input-profiling.txt
 
-gprof: test_gprof.x gmon.out
-	gprof $^ > gprof.txt
+gprof: gprof.x gmon.out
+	gprof $^ > gprof-report.txt
 
 valgrind.x: $(OBJ)/main.o $(OBJ)/include.o
-	g++ $(CXX_FLAGS) $(DEBUG_FLAGS) $^ -o $@
+	g++ $(CXX_FLAGS) $(OPTFLAGS) $(DEBUG_FLAGS) $^ -o $@
 
 cachegrind-report.txt: valgrind.x input-profiling.txt
 	valgrind --tool=cachegrind --cachegrind-out-file=$@ --quiet ./$^
@@ -66,4 +67,4 @@ memcheck: valgrind.x input-profiling.txt
 	valgrind --tool=memcheck --leak-check=yes ./$^
 
 clean: 
-	rm *.x cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
+	rm *.out *.x gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
