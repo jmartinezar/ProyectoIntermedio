@@ -47,11 +47,14 @@ test.x: $(OBJ)/test.o $(OBJ)/include.o
 test: test.x
 	./$<
 
-gprof.x: $(OBJ)/main.o $(OBJ)/include.o
-	g++ $(OPTFLAGS) $(DEBUG_FLAGS) -pg $^ -o $@
+test_gprof:
+	g++ -c -pg main.cpp -o $(OBJ)/main.o
+	g++ -c -pg include/include.cpp -o $(OBJ)/include.o
+	g++ $(DEBUG_FLAGS) -pg $(OPTFLAGS) $(OBJ)/main.o $(OBJ)/include.o -o $@
 	./$@ input-profiling.txt
+	@rm -f $(OBJ)/main.o $(OBJ)/include.o # conflicts with valgrind files, the -pg flag increases considerably the execution time
 
-gprof: gprof.x gmon.out
+gprof: test_gprof gmon.out
 	gprof $^ > gprof-report.txt
 
 valgrind.x: $(OBJ)/main.o $(OBJ)/include.o
@@ -67,4 +70,4 @@ memcheck: valgrind.x input-profiling.txt
 	valgrind --tool=memcheck --leak-check=yes ./$^
 
 clean: 
-	rm -f *.out *.x gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
+	rm -f *.out *.x test_gprof gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
