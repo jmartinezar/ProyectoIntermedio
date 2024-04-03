@@ -3,19 +3,21 @@
 #include <fstream>
 #include <vector>
 
-int main(void)
+int main(int argc, char **argv)
 {
   ////////////////////////////////////////////////////////////////////////
   //////////////////////// 1st point /////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
   
+  std::string inputfile = argv[1]; // reads the filename from the command line
+
   int Nmol = 0;
   int size = 0;
   int Nstep = 0;
   int seed = 0;
 
   std::ifstream input;
-  input.open("input.txt");
+  input.open(inputfile);
   input >> Nmol >> size >> Nstep >> seed;
   input.close();
   
@@ -34,12 +36,7 @@ int main(void)
   ////////////////////////////////////////////////////////////////////////
   //////////////////////// 2nd point /////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
-  
-  std::ifstream input2;
-  input2.open("input.txt");
-  input2 >> Nmol >> size >> Nstep >> seed;
-  input2.close();
-  
+    
   particles = {0};
   particles.resize(Nmol);
   
@@ -67,11 +64,6 @@ int main(void)
   //////////////////////// 3rd point /////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
 
-  std::ifstream input3;
-  input3.open("input.txt");
-  input3 >> Nmol >> size >> Nstep >> seed;
-  input3.close();
-
   particles = {0};
   particles.resize(Nmol);
 
@@ -87,14 +79,9 @@ int main(void)
   ////////////////////////////////////////////////////////////////////////
   //////////////////////// 4th point /////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
-
-  int ratio = 0;
-
-  std::ifstream input4;
-  input4.open("input4.txt");
-  input4 >> Nmol >> size >> Nstep >> seed >> ratio;
-  input4.close();
   
+  int ratio = 5;
+
   particles = {0};
   particles.resize(Nmol);
 
