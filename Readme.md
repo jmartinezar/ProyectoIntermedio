@@ -29,6 +29,7 @@ El sistema fue modelado tomando en consideración dos partes del mismo: la taza 
 
 ## Makefile
 - `all`: Compila y crea el ejecutable principal para generar todos los datos necesarios para la solución de los puntos 1, 2, 3 y 4.
+- `exec`: Ejecuta los archivos generados por `all`. Genera todas las gráficas de solución a los puntos e imprime un mensaje indicando dónde se pueden encontrar los archivos `.log` de `gnuplot` con la información de los arreglos hechos.
 - `test`: Compila y ejecuta los tests creados con `catch2`. Se consta de 5 tests, separados en dos grupos, haciendo pruebas sobre la emergente propiedad de la flecha del tiempo, y sobre la entropía de Boltzmann.
 <!-- - `gprof`:  -->
 - `cachegrind`: Compila de la forma adecuada los archivos `main.cpp` e `include.cpp` para crear un reporte de profiling llamado `cachegrind-profiling.txt` que se guarda en el directorio raíz y contiene información sobre el número de ejecuciones ejecutadas por el programa.<br><b>Tiempo de ejecución: </b> Para un equipo con un procesador Intel i510300H de 4 núcleos y 8 hilos con frecuencia base 2.50Ghz, la ejecución de `cachegrind`, usando el archivo `input-profiling.txt` con `Nsteps = 10000` (archivo default) tarda aproximadamente 3m10s.
