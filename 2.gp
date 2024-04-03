@@ -1,4 +1,4 @@
-set fit logfile 'figures/fitlogs/2.log'
+set fit logfile 'figures/fitlogs/2.log' quiet
 f(x) = a*x**2 + b*x
 #f(x) = c*x**2
 fit f(x) "data/2.txt" via a, b

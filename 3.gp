@@ -1,4 +1,4 @@
-# set fit logfile 'figures/fitlogs/3.log'
+# set fit logfile 'figures/fitlogs/3.log' quiet
 # f(x) = a*sqrt(x + b) + c
 # fit f(x) "3.txt" via a, b, c
 

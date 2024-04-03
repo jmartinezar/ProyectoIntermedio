@@ -1,4 +1,4 @@
-set fit logfile 'figures/fitlogs/4.log'
+set fit logfile 'figures/fitlogs/4.log' quiet
 f(x) = 400*exp(-(x - A)/B)
 A=5000
 B=500000
