@@ -3,8 +3,10 @@ DEBUG_FLAGS = -g -Wall -fsanitize=address,undefined,leak
 OBJ = obj
 DAT = data
 
-main: main.x input.txt input4.txt
+exec: main.x all
 	./$<
+
+all: main.x input.txt input4.txt
 
 main.x: $(OBJ)/main.o $(OBJ)/include.o
 	g++ $(CXX_FLAGS) $(DEBUG_FLAGS) $^ -o $@
