@@ -67,4 +67,4 @@ memcheck: valgrind.x input-profiling.txt
 	valgrind --tool=memcheck --leak-check=yes ./$^
 
 clean: 
-	rm *.out *.x gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
+	rm -f *.out *.x gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
