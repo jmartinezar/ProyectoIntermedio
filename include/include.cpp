@@ -80,8 +80,8 @@ void evolution(int Nmol, int size, std::vector<int> & vector, int seed, int Nste
   
   // case 3 stuff
   // double cup_size = std::pow(size,2); // area of the squared cup
-  double cup_size = M_PI * std::pow(size/2.0,2); // area of the circumscribed circle in the squared cup 
-  // double cup_size = 200.0;
+  // double cup_size = M_PI * std::pow(size/2.0,2)/2.0; // area of the circumscribed circle in the squared cup 
+  double cup_size = 200.0;
   double drop_size = 0.0;
   int t_fill = 0;
   bool done = false;
