@@ -5,7 +5,10 @@ SANITIZERS = -fsanitize=address,undefined,leak
 OBJ = obj
 DAT = data
 
-exec: main.x all
+exec: $(DAT)/%.txt main.x all 1 2 3 4
+	@echo "\nEjecución terminada. Los archivos .log de los arreglos se encuentran en el directorio figures/fitlogs"
+
+$(DAT)/%.txt: main.x
 	./$< input.txt
 
 all: main.x input.txt
