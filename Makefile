@@ -7,7 +7,7 @@ DAT = data
 exec: main.x all
 	./$< input.txt
 
-all: main.x input.txt input4.txt
+all: main.x input.txt
 
 main.x: $(OBJ)/main.o $(OBJ)/include.o
 	g++ $(CXX_FLAGS) $(DEBUG_FLAGS) $(SANITIZERS) $^ -o $@
