@@ -1,0 +1,252 @@
+\documentclass{article}
+\usepackage{arxiv}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+
+\usepackage{lipsum}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning}
+\tikzstyle{arrow}=[thin,->,>=stealth]
+\usepackage{cite}
+\renewcommand{\citeleft}{\textsuperscript{[}}
+\renewcommand{\citeright}{\textsuperscript{]}}
+\usepackage{fancyhdr}
+\usepackage[nottoc]{tocbibind}
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{csquotes}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{tikz}
+\renewcommand{\labelitemii}{$\ast$}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\captionsetup{justification=centering}
+\makeatletter
+\def\@getref#1.#2{#2}
+\newcommand{\getref}[1]{%
+  \begingroup
+  \edef\x{\endgroup\noexpand\@getref\getrefnumber{#1}}\x}
+\makeatother
+
+\newcommand{\V}{\text{V}}
+\newcommand{\J}{\text{J}}
+\newcommand{\kg}{\text{kg}}
+\newcommand{\m}{\text{m}}
+\newcommand{\s}{\text{s}}
+\newcommand{\C}{\text{C}}
+\newcommand{\picom}{\text{pm}}
+\newcommand{\rad}{\text{rad}}
+\newcommand{\eV}{\text{eV}}
+\newcommand{\e}{\text{e}}
+\newcommand{\Hz}{\text{Hz}}
+\newcommand{\W}{\text{W}}
+\newcommand{\K}{\text{K}}
+\newcommand{\A}{\text{A}}
+\newcommand{\Ohm}{\text{\Omega}}
+\newcommand{\mV}{\text{mV}}
+\newcommand{\mA}{\text{mA}}
+\newcommand{\mm}{\text{mm}}
+\newcommand{\cpm}{\text{cpm}}
+\newcommand{\Ci}{\text{Ci}}
+\newcommand{\Cen}{^\circ\text{C}}
+\newcommand{\muV}{\mu\text{V}}
+\newcommand{\kOhm}{\text{k\Omega}}
+\newcommand{\g}{\text{g}}
+\newcommand{\calor}{\text{cal}}
+
+\usepackage[numbers]{natbib}
+
+
+\title{Entropía en crema que se difunde en una taza de café}
+
+
+\author{
+ {\large Emmanuel Arias Polanco$^1$, David Alejandro Marín Rincón$^1$,} \\
+ {\large Juan Sebastian Martinez Arevalo$^1$, Tania Estefania Prieto Ramírez$^1$} \\ \\
+ \textit{$^1$Introducción a la computación científica de alto rendimiento,} \\ 
+ \textit{Departamento de Física, Universidad Nacional, Bogotá, Colombia} \\ \\
+\Today\\ \\
+ Profesor: William Fernando Oquendo Patiño\\
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+}
+\begin{document}
+\vspace{-5mm}
+\maketitle
+%%%%%%%%%%% 6+-1 / 0.5+-0.1 = 12+-4
+%%%%%%%%%%% 16.6%+20%=36.6% 
+\begin{abstract}
+    En este trabajo, se aborda el problema físico correspondiente a una taza de café con crema sobre su superficie, la cual, se disuelve a medida que pasa el tiempo en donde se analiza el comportamiento de la entropía presente en la crema a lo largo del tiempo, el tiempo de equilibrio con respecto al tamaño del recipiente, el tamaño de la gota de crema con respecto al tiempo y el caso donde nuestro recipiente tiene una hueco en donde escapan las moléculas del café con crema. El desarrollo del trabajo se realizo por medio del lenguaje de programación c++ haciendo uso de herramientas de la misma
+\end{abstract}
+
+\rule{\linewidth}{0.5mm}
+%---------------------------------------------------------------
+
+\section*{Introducción}
+
+    La entropía, una medida fundamental en la termodinámica y la física estadística, describe el grado de desorden o aleatoriedad en un sistema. A nivel macroscópico, se observa que la entropía tiende a incrementarse en sistemas cerrados, lo que conduce a la noción de la "flecha del tiempo", una dirección distintiva en la que el tiempo parece transcurrir debido a la asimetría temporal en las leyes físicas. Este proyecto explora un modelo computacional que refleja este comportamiento, utilizando la difusión de crema en una taza de café como un sistema cerrado bidimensional para estudiar cómo la entropía evoluciona hacia el equilibrio.
+
+    A través de la simulación de este modelo, realizamos un análisis de cómo la entropía varía con el tiempo, en el contexto de un paseo aleatorio sobre una malla cuadrada que representa la taza de café, partiendo de una distribución inicial concentrada de crema y observando cómo esta se dispersa para maximizar la entropía del sistema. A medida que las moléculas de crema se mueven aleatoriamente y el sistema evoluciona. A través de esta simulación podemos tener un acercamiento hacia la comprensión de procesos físicos fundamentales desde una perspectiva computacional. El análisis de este sistema no solo es relevante para el campo de la física, sino que también destaca la importancia de la computación de análisis de sistemas complejos.
+
+    Este proyecto detalla la metodología adoptada para modelar la entropía de la difusión de una gota de crema en una taza de café, presenta el uso de una compilación correcta y discute los resultados de una computación optimizada.
+
+\section*{Marco Teórico}
+
+    La entropía se entiende generalmente como una cuantificación del desorden: un sistema perfectamente ordenado posee una entropía mínima, mientras que uno desordenado la maximiza. En el ámbito de la física estadística, la entropía es un concepto crucial que refleja las probabilidades distribuidas en los estados de un sistema. Este concepto se manifiesta de manera ejemplar en la difusión, donde la crema en el café se dispersa para explorar todos los estados disponibles del sistema cerrado, como es el caso de nuestra taza bidimensional.
+
+    La simulación de la difusión de la crema, descrita por un paseo aleatorio de sus moléculas, es una representación microscópica que culmina en un aumento de la entropía, lo que ilustra el comportamiento macroscópico esperado según la Segunda Ley de la Termodinámica. Con la crema inicialmente concentrada en el centro de la taza, nuestro modelo computacional rastrea la evolución temporal del sistema a través de pasos aleatorios de las moléculas. Para hacer la descripción cuantitativa de la entropía, tenemos que la definición estadística de la entropía es $S$ y está dada por la siguiente relación
+
+    \begin{equation}
+        S = - \sum P_i ln( P_i )
+    \end{equation}
+    
+    Donde la suma es sobre todos los posibles estados del sistema y $P_i$ es la probabilidad de encontrar el sistema en el estado $i$ \cite{paper}. Aplicando esta formula y utilizando la hipótesis ergódica, la idea de que, dada suficiente tiempo, un sistema explorará todos sus estados posibles con igual probabilidad, lo que es un fundamento de la física estadística y un pilar en la interpretación de sistemas dinámicos y caóticos. Así, la difusión de la crema en el café se convierte en un modelo clásico y para ilustrar problemas avanzados de la termodinámica y la estadística.
+
+
+\section*{Metodología}
+
+    El estudio se centró en la simulación del proceso de difusión de la crema en una taza de café, modelando el sistema como una malla en la cual las partículas de crema pueden moverse. El objetivo principal fue analizar la variación de la entropía del sistema a lo largo del tiempo, implementando el modelo computacional en C++ y aplicando técnicas de optimización y análisis de rendimiento vistas en la primera parte del curso.
+
+    \subsection*{Modelo Computacional}
+        El modelo representa la taza de café como una malla cuadrada, donde cada celda puede contener partículas de crema. Las partículas se mueven de acuerdo a reglas predefinidas que simulan la difusión, considerando movimientos aleatorios en las cuatro direcciones principales o permaneciendo en su posición. Las condiciones iniciales se establecen colocando la crema en el centro de la taza, y se aplica un algoritmo para simular la difusión a lo largo del tiempo.
+
+    \subsection*{Simulación y Parámetros}
+        Las simulaciones se realizaron leyendo los parámetros de ejecución desde un archivo de texto `input.txt`, que incluye el tamaño de la malla, el número de moléculas de crema, y el número de iteraciones. El código fue diseñado para ser modular, facilitando la ejecución de pruebas, el profiling y el debugging mediante un Makefile. Se utilizaron herramientas como Catch2 para las pruebas, gprof y Valgrind para el profiling, y sanitizers para asegurar la calidad del código.
+
+    \subsection*{Análisis de Datos}
+        El análisis se centró en la medición de la entropía del sistema a lo largo del tiempo y el estudio de su aproximación al equilibrio. Se calculó la entropía utilizando la distribución de partículas en la malla y se comparó contra el valor teórico esperado. Adicionalmente, se realizó un análisis del rendimiento computacional, evaluando el tiempo de ejecución en función del tamaño del sistema y las optimizaciones aplicadas.
+
+    \subsection*{Herramientas y Optimizaciones}
+        Se discute el impacto de diversas optimizaciones en el rendimiento del código, incluyendo la compilación con la bandera -O3 y el uso de técnicas específicas de optimización de memoria y procesamiento. Los resultados de profiling proporcionan una visión detallada de cómo estas optimizaciones afectan la eficiencia del programa.
+
+\section*{Resultados}
+\section*{Punto 1}
+    Calcule la entropía para el problema de la crema en el café y reproduzca los resultados en la figura 7.21.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics{figures/1.pdf}
+        \caption{Entropía en función del tiempo para una ditribución de crema en un recipiente.}
+        \label{Graficapunto1}
+    \end{figure}
+
+    Se realizó la declaración de 4 variables, Nmol, size, Nstep y seed que cuenta la cantidad de moléculas en el café; el tamaño de la taza de café suponiendo una geometría cuadrada; el paso que determina el movimiento a realizar y la semilla con valores de números aleatorios respectivamente. Con esto, se ingresan los valores dados en 'input.txt', en donde se hace se ejecuta la función 'cuatro$\_$cuadros$\_$centrados' para generar distribuciones aleatorias de crema en el café y finalmente, con la función 'evolution', ver la evolución de la entropía en función del tiempo, guardando la información en un archivo .txt, esta gráfica se puede observar en la Figura (\ref{Graficapunto1}).\footnote{Para información mas puntual y precisa de cada una de las funciones utilizadas, puede recurrir al Readme.md y al archivo include.cpp adjuntadas en la entrega del trabajo.} En esta grafica, se puede obtener información del tope de la entropía, en donde, después de un tiempo, se mantiene constante a razón de que la crema llena el recipiente.
+
+    
+    
+\section*{Punto 2}
+    Calcula S en función del tiempo para el problema de la crema en el café para recipientes de diferentes tamaños. Demuestre que el tiempo necesario para alcanzar el equilibrio varía con el cuadrado del tamaño.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics{figures/2.pdf}
+        \caption{Tiempo de equilibrio en función del tamaño del recipiente para el problema de la crema del café.}
+        \label{Graficapunto2}
+    \end{figure}
+
+    Con los datos del input.txt, se toman cierta cantidad de particulas aleatorias y se declara la función 'find$\_$t$\_$eq' luego de haberlas distribuido por 'cuatro$\_$cuadros$\_$centrados', donde, se halla el tiempo para el cual el sistema alcanza el equilibrio con el cuadrado del tamaño, sin embargo, se considera que el sistema esta en equilibrio cuando el valor es el 70$\%$ o más del valor teórico. Así, se gráfica el tiempo de equilibrio con respecto al tamaño como se puede observar en la Figura (\ref{Graficapunto2}), en donde, vemos que el sistema en efecto crece con una curva de ajuste cuadrática como se espera en el problema.
+\section*{Punto 3}
+    Realice la simulación de paso aleatorio de las figuras 7.18 y 7.19 y demuestre que el tamaño de la gota de crema aumenta $t^{1/2}$ (nuestro comportamiento difusivo familiar), siempre que la gota sea más pequeña que el tamaño del recipiente. Muestre que el comportamiento cambia cuando la gota se ha extendido tanto que llena uniformemente el recipiente. El tiempo en el que el tamaño de la gota deja de aumentar debe ser el mismo que el tiempo en el que el sistema alcanza el equilibrio determinado por la entropía.
+    
+    \textbf{Sugerencia:} una medida conveniente del tamaño de la gota de crema es la distancia cuadrática media de las partículas del origen, $\sqrt{\left(\Sigma r_{i}^{2}\right)/N}$.
+
+        \begin{figure}[h]
+        \centering
+        \includegraphics{figures/3.pdf}
+        \caption{Tamaño de la gota en función del tiempo para el problema de la crema del café.}
+        \label{Graficapunto3}
+    \end{figure}
+
+    Para este punto, similar al primero, se generan los valores iniciales de input.txt en donde se vuelve a hacer una distribución de crema de café en las cuatro posiciones centrales de la taza como se haría en las figuras 7.18 y 7.19, sin embargo, se hace la evolución del cambio de tamaño de la gota con respecto al tiempo como se puede observar en la Figura (\ref{Graficapunto3}), donde, se puede ver que el sistema llega a un equilibrio donde el tamaño de gota deja de aumentar y llena uniformemente el recipiente.
+\section*{Punto 4}
+    Realice la simulación de paseo aleatorio de crema para untar (Figuras 7.18 y 7.19) y deje que una de las paredes del recipiente posea un pequeño orificio de modo que si una molécula de crema entra en el orificio, salga del recipiente. Calcule el número de moléculas en el recipiente en función del tiempo. Demuestre que este número, que es proporcional a la presión parcial de las moléculas de crema, varía como $exp\left(-t/\tau\right)$, donde $\tau$ es la constante de tiempo efectiva para el escape. 
+    
+    \textbf{Sugerencia:} Elecciones de parámetros razonables son una retícula de contenedor de $50 \times 50$ y un agujero de $10$ unidades de longitud a lo largo de uno de los bordes.
+
+            \begin{figure}[h]
+        \centering
+        \includegraphics{figures/4.pdf}
+        \caption{Numero de moléculas en el recipiente en función del tiempo para el problema de la crema en café.}
+        \label{Graficapunto4}
+    \end{figure}
+    
+     Aquí, se genera la distribución de crema central como se ha hecho en puntos anteriores con la diferencia de que se declara una función llamada 'with $\_$ hole' que genera un orificio en algún lugar del recipiente y luego calcula la evolución temporal de partículas en función del tiempo como se puede observar en la Figura (  \ref{Graficapunto4}).\footnote{Para información aun más precisa de las funciones usadas se puede ver el archivo main.cpp junto alarchivo include.cpp} Aquí, se puede observar que la cantidad de moléculas en el recipiente decae en función de una exponencial como nos comenta el ejercicio.
+
+\section*{Dependencia del tiempo de ejecución con el tamaño de la taza}
+Se estudió igualmente la dependencia del tiempo de ejecución del programa con el parámetro \texttt{size}, que modela el tamaño de la taza, al variarlo entre $5$ y $40$, en incrementos de $5$. La ejecución del programa consiste de todo lo necesario hasta este momento para generar lo presentado en esta sesión de resultados; esto es, la lectura de los datos desde el archivo de configuración, la generación de los datos a partir de la ejecución del programa, y la generación de todas las figuras presentadas hasta este momento, incluyendo los ajustes realizados. Esta medición, además, se hizo usando la bandera de optimización \texttt{O3} de \texttt{g++}, obteniendo los datos presentados en la tabla \ref{time}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ccc}\toprule
+        \texttt{size} & tiempo[$s$] O3 & tiempo[$s$] no O3 \\\midrule
+        5   &	4.995 	&  4.748 \\\midrule
+        10	&    6.959   &	6.580 \\\midrule
+        15	&    9.669   &   9.379 \\\midrule
+        20	&    13.589  &   12.704 \\\midrule
+        25	&    19.369  &   18.278 \\\midrule
+        30	&    29.937  &   28.671 \\\midrule
+        35	&    63.806  &   60.199 \\\midrule
+        40  &    258.449	&  249.019 \\\midrule
+    \end{tabular}
+    \caption{Tiempos de compilación en función del tamaño de la taza. Con y sin la bandera de optimización.}
+    \label{time}
+\end{table}
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+        \includegraphics[width = .8\linewidth]{figures/exectime.pdf}
+    \caption{Dependencia}
+    \label{exectime}
+\end{figure}
+
+En nuestro caso, se presentó una leve mejora en cuanto al tiempo de ejecución, como se puede apreciar en la tabla \ref{time} y el la figura \ref{exectime}. A pesar de que indagamos en un porqué, no encontramos nada concluyente al respecto. Suponemos, que esto se puede deber principalmente a la forma y a el tipo de optimizaciones que hace \texttt{O3}, que, en nuestro caso, no representaron una mejora.
+
+\section*{Conclusiones}
+De la sección 7 del libro de Física Computacional, se pudieron resolver satisfactoriamente los ejercicios pedidos a partir de un archivo 'main.cpp' con relación a un archivo de funciones 'include.h', en donde se generaron las gráficas correspondientes para el análisis del ejercicio en cuestión dando como solución a diversos problemas de la crema distribuida en un recipiente con café.
+
+%Fin c:
+\bibliographystyle{plain}
+\bibliography{referencias}
+
+
+
+\end{document}
+
+

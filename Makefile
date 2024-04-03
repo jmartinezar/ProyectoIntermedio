@@ -72,5 +72,12 @@ cachegrind: cachegrind-report.txt
 memcheck: valgrind.x input-profiling.txt
 	valgrind --tool=memcheck --leak-check=yes ./$^
 
+# it has to be compiled twice to get the references right. 
+# texlive-lang-spanish and texlive-fonts-extra must be installed to compile
+report: 1 2 3 4 exectime
+	pdflatex --interaction=batchmode report.tex
+	bibtex report
+	pdflatex --interaction=batchmode report.tex
+
 clean: 
-	rm -f *.out *.x test_gprof gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
+	rm -f *.aux *.bbl *.blg *.log *.out *.pdf *.dtx *.x test_gprof gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
