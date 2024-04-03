@@ -1,5 +1,6 @@
 CXX_FLAGS = -std=c++20 -O3
 DEBUG_FLAGS = -g -Wall
+C2FLAGS = -l Catch2Main -l Catch2
 SANITIZERS = -fsanitize=address,undefined,leak
 OBJ = obj
 DAT = data
@@ -31,6 +32,16 @@ $(OBJ)/main.o: main.cpp include/include.cpp
 
 4: 4.gp $(DAT)/4.txt
 	gnuplot 4.gp
+
+$(OBJ)/test.o: test.cpp include/include.cpp
+	g++ -c test.cpp -o $(OBJ)/test.o
+	g++ -c include/include.cpp -o $(OBJ)/include.o
+
+test.x: $(OBJ)/test.o $(OBJ)/include.o
+	g++ $^ -o $@ $(C2FLAGS)
+
+test: test.x
+	./$<
 
 test_gprof.x: main.cpp include.cpp
 	g++ -O3 -Wall -pg -g $^ -o $@
