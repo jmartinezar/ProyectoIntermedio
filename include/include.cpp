@@ -130,7 +130,7 @@ void evolution(int Nmol, int size, std::vector<int> & vector, int seed, int Nste
       break;
 
     case 3:
-      output << 9876543 << "\t" << t_fill;
+      output << 2147483647 << "\t" << t_fill;
       output << "\n#The second column of this last value corresponds to the time when the drop fills the cup";
       break;
   }
