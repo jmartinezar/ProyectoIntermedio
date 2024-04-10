@@ -1,2 +1,4 @@
-special-vendored-path/* linguist-vendored
-TeX linguist-vendored=false
+*.sty linguist-vendored=false
+*.bib linguist-vendored=false
+*.tex linguist-vendored=false
+report/* linguist-vendored=false
