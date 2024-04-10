@@ -26,16 +26,16 @@ $(OBJ)/main.o: main.cpp include/include.cpp
 # will "compile" it to a .o file by doing nothing, as this rule indicates
 
 1: 1.gp $(DAT)/1.txt
-	gnuplot 1.gp
+	gnuplot $<
 
 2: 2.gp $(DAT)/2.txt
-	gnuplot 2.gp
+	gnuplot $<
 
 3: 3.gp $(DAT)/3.txt
-	gnuplot 3.gp
+	gnuplot $<
 
 4: 4.gp $(DAT)/4.txt
-	gnuplot 4.gp
+	gnuplot $<
 
 exectime: exectime.gp exectime.txt
 	gnuplot exectime.gp
