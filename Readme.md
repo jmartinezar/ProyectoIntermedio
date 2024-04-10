@@ -24,6 +24,7 @@ El sistema fue modelado tomando en consideración dos partes del mismo: la taza 
 - `figures/*.pdf`:  Archivos `.pdf` con las figuras generadas para cada punto.
 - `figures/fitlog/*`: Archivos `.log` con los datos de las regresiones hechas para los puntos `2,3,4`.
 - `obj/*`: Directorio de archivos objeto generados por la ejecución. 
+- `report/*`: Directorios de archivos generados para la compilación del informe, incluído el `pdf` final y los archivos generados para la compilación con `pdflatex`
 - `cachegrind-report.txt`: Archivo de reporte de `valgrind` usando la herramienta `--tool=cachegrind`.
 - `Makefile`: Archivo de automatización con los targets que se especifican a continuación. 
 - `/*.x`: Ejecutables generados. 
@@ -35,7 +36,8 @@ El sistema fue modelado tomando en consideración dos partes del mismo: la taza 
 - `cachegrind`: Compila de la forma adecuada los archivos `main.cpp` e `include.cpp` para crear un reporte de profiling llamado `cachegrind-profiling.txt` que se guarda en el directorio raíz y contiene información sobre el número de ejecuciones realizadas por el programa.<br><b>Tiempo de ejecución: </b> Para un equipo con un procesador Intel i510300H de 4 núcleos y 8 hilos con frecuencia base 2.50Ghz, la ejecución de `cachegrind`, usando el archivo `input-profiling.txt` con `Nsteps = 10000` (archivo default) tarda aproximadamente 3m10s.
 - `memcheck`: Compila adecuadamente los archivos `main.cpp` e `include.cpp` para detectar posibles leaks de memoria en la implementación.<br><b>Tiempo de ejecución: </b> Para el mismo equipo, la ejecución de `memcheck`, usando el archivo `input-profiling.txt` con `Nsteps = 10000` (archivo default) tarda aproximadamente 3m20s.
 - `gprof`: Compila adecuadamente los archivos `main.cpp` e `include.cpp` para crear un reporte de profiling llamado `gprof-report.txt` que se guarda en el directorio raíz y contiene información sobre los tiempos de ejecución de las funciones. <br><b>Tiempo de ejecución: </b> Para el mismo equipo, la ejecución de `memcheck`, usando el archivo `input-profiling.txt` con `Nsteps = 10000` (archivo default) tarda aproximadamente 38s.
-<!-- - `report`:  -->
+- `report`: Crea el informe del trabajo. Crea las figuras con `gnuplot` y compila los archivos `report.tex`, `arxiv.sty`, `referencias.bib` con `pdflatex` y `bibtex` para general el pdf final.
+- `just-report`: Elimina todos los archivos auxiliares generados para la creación del archivo `report.pdf` dejando solo este último, en el directorio `report`.
 
 # Funciones implementadas
 
