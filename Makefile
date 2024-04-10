@@ -1,5 +1,5 @@
 CXX_FLAGS = -std=c++20
-OPTFLAGS = 
+OPTFLAGS = -O3
 DEBUG_FLAGS = -g -Wall
 C2FLAGS = -l Catch2Main -l Catch2
 SANITIZERS = -fsanitize=address,undefined,leak
@@ -72,12 +72,15 @@ cachegrind: cachegrind-report.txt
 memcheck: valgrind.x input-profiling.txt
 	valgrind --tool=memcheck --leak-check=yes ./$^
 
-# it has to be compiled twice to get the references right. 
+# this has to be compiled twice to get the references right. 
 # texlive-lang-spanish and texlive-fonts-extra must be installed to compile
 report: 1 2 3 4 exectime
-	pdflatex --interaction=batchmode report.tex
-	bibtex report
-	pdflatex --interaction=batchmode report.tex
+	pdflatex --interaction=batchmode -output-directory=report/ report.tex
+	bibtex -terse report/report
+	pdflatex --interaction=batchmode -output-directory=report/ report.tex
+
+just-report:
+	rm report/*.aux report/*.bbl report/*.blg report/*.log report/*.out
 
 clean: 
-	rm -f *.aux *.bbl *.blg *.log *.out *.pdf *.dtx *.x test_gprof gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/*
+	rm -f *.x test_gprof gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/* report/*

@@ -11,7 +11,7 @@ figures/*.pdf
 figures/fitlogs/*
 # object files generated for execution
 obj/*
-# report files
+# valgrind report files
 cachegrind-report.txt
 gprof-report.txt
 # some other files generated at execution
