@@ -1,4 +1,2 @@
-*.sty linguist-vendored=false
-*.bib linguist-vendored=false
-*.tex linguist-vendored=false
-report/* linguist-vendored=false
+*.sty linguist-vendored
+*.tex linguist-vendored
