@@ -14,6 +14,9 @@ obj/*
 # valgrind report files
 cachegrind-report.txt
 gprof-report.txt
+# report
+!report/.gitkeep
+report/*
 # some other files generated at execution
 *.aux *.bbl *.blg *.dtx
 gmon.out
