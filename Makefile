@@ -83,4 +83,4 @@ just-report:
 	rm report/*.aux report/*.bbl report/*.blg report/*.log report/*.out
 
 clean: 
-	rm -f *.x test_gprof gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/* report/*
+	rm -f *.out *.x test_gprof gprof-report.txt cachegrind-report.txt obj/* data/* figures/*.pdf figures/fitlogs/* report/*
